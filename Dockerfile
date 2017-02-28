@@ -24,14 +24,17 @@ ENV CROSS_COMPILE=/android/arm-eabi-4.8/bin/arm-eabi-
 # Notes: requires 20GB download, 100GB space disk
 ###
 
-RUN git clone https://github.com/rcstar6696/kernel
 #RUN git clone https://github.com/SonyAosp/kernel
+RUN git clone https://github.com/rcstar6696/kernel
+
+# Notes:
+# - The latest Sony AOSP kernel work for Shinano/Sirius is on kernel sources 3.10.84 on Android 7.0 branch (https://github.com/SonyAosp/kernel/blob/android-7.0/Makefile#L2)
+# - rcstar6696/kernel:android-7.1 in fact uses kernel 3.10.84 sources from SonyAosp:android-7.0 and not the ones from SonyAosp:android-7.1 (3.18.x, https://github.com/SonyAosp/kernel/blob/android-7.1/Makefile#L2)
+# - rcstar6696/kernel patches: https://github.com/rcstar6696/kernel/compare/android-7.1...SonyAosp:android-7.0
 
 WORKDIR kernel
 
 RUN git checkout android-7.1
-
-#ADD aosp_shinano_sirius_defconfig arch/arm/configs/
 
 RUN make ARCH=arm CROSS_COMPILE=$CROSS_COMPILE aosp_shinano_sirius_defconfig && \
     make ARCH=arm CROSS_COMPILE=$CROSS_COMPILE -j `nproc`
