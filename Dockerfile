@@ -31,10 +31,11 @@ RUN git clone https://github.com/rcstar6696/kernel
 # - The latest Sony AOSP kernel work for Shinano/Sirius is on kernel sources 3.10.84 on Android 7.0 branch (https://github.com/SonyAosp/kernel/blob/android-7.0/Makefile#L2)
 # - rcstar6696/kernel:android-7.1 in fact uses kernel 3.10.84 sources from SonyAosp:android-7.0 and not the ones from SonyAosp:android-7.1 (3.18.x, https://github.com/SonyAosp/kernel/blob/android-7.1/Makefile#L2)
 # - rcstar6696/kernel patches: https://github.com/SonyAosp/kernel/compare/android-7.0...rcstar6696:android-7.1
+# - Latest changes are on rcstar6696:android-7.1-test
 
 WORKDIR kernel
 
-RUN git checkout android-7.1
+RUN git checkout android-7.1-test
 
 RUN make ARCH=arm CROSS_COMPILE=$CROSS_COMPILE aosp_shinano_sirius_defconfig && \
     make ARCH=arm CROSS_COMPILE=$CROSS_COMPILE -j `nproc`
@@ -68,7 +69,7 @@ RUN repo sync
 ADD deps/upstream-patches.sh /android/
 
 RUN cp kernel/arch/arm/boot/zImage device/sony/sirius/kernel && \
-    cp -rp kernel/arch/arm/boot/dts/*.dtb device/sony/sirius/dtbs/ && \
+    cp -rp kernel/arch/arm/boot/dts/*.dtb device/sony/sirius/dtbs/
 
 RUN chmod +x upstream-patches.sh && ./upstream-patches.sh && \
 	source build/envsetup.sh && \
