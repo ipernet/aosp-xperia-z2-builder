@@ -32,5 +32,5 @@ Standard flash method on a unlocked device in bootloader mode using Android Plat
 # Copyright / credits
 
 - AOSP Sony Open Devices binaries and configurations: [`Copyright (C) Sony Mobile Communications 2014`](https://github.com/SonyAosp/device_sony_sirius/blob/android-7.1/README.md)
-- The Linux Kernel:  [GNU General Public License v2](https://github.com/SonyAosp/kernel/blob/android-7.1/COPYING)
+- The Linux Kernel:  [`GNU General Public License v2`](https://github.com/SonyAosp/kernel/blob/android-7.1/COPYING)
 - [rcstar6696](https://github.com/rcstar6696/kernel) patches.
