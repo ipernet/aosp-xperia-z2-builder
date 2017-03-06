@@ -1,1 +1,1 @@
-Sony/aosp_d6503/sirius:7.1.1/NOF26W/02282231:userdebug/test-keys
+Sony/aosp_d6503/sirius:7.1.1/NOF26W/03060048:userdebug/test-keys
