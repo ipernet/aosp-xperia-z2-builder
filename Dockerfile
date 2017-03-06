@@ -66,9 +66,13 @@ RUN unzip SW_binaries_for_Xperia_AOSP_M_MR1_v09.zip && rm SW_binaries_for_Xperia
 
 RUN repo sync
 
+# Reset the repo to a clean state if local changes (upstream-patches) have been applied.
+# RUN repo forall -c 'git reset --hard ; git clean -fdx'
+
 ADD deps/upstream-patches.sh /android/
 
 RUN cp kernel/arch/arm/boot/zImage device/sony/sirius/kernel && \
+	mkdir device/sony/sirius/dtbs/ ; \
     cp -rp kernel/arch/arm/boot/dts/*.dtb device/sony/sirius/dtbs/
 
 RUN chmod +x upstream-patches.sh && ./upstream-patches.sh && \
