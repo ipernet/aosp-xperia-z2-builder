@@ -27,6 +27,7 @@ Standard flash method on a unlocked device in bootloader mode using Android Plat
 # Sources
 
 - https://developer.sonymobile.com/open-devices/aosp-build-instructions/how-to-build-aosp-nougat-for-unlocked-xperia-devices/
+- https://developer.sonymobile.com/open-devices/how-to-build-and-flash-a-linux-kernel/how-to-build-and-flash-a-linux-kernel-for-aosp-supported-devices/
 - https://github.com/SonyAosp/kernel.git / https://github.com/rcstar6696/kernel.git
 
 # Copyright / credits

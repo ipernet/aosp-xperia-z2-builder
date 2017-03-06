@@ -7,7 +7,7 @@ RUN echo "deb http://ftp.debian.org/debian jessie-backports main contrib" >>  /e
   apt-get -y --force-yes install -t jessie-backports openjdk-8-jdk && \
   apt-get -y --force-yes install \
 	#Kernel
-    git build-essential python bc lzop \
+    git build-essential python bc lzop ncurses-dev \
 	# AOSP
 	curl bison g++-multilib git gperf libxml2-utils make zlib1g-dev zip && \
   # Cleaning
@@ -71,9 +71,7 @@ RUN repo sync
 
 ADD deps/upstream-patches.sh /android/
 
-RUN cp kernel/arch/arm/boot/zImage device/sony/sirius/kernel && \
-	mkdir device/sony/sirius/dtbs/ ; \
-    cp -rp kernel/arch/arm/boot/dts/*.dtb device/sony/sirius/dtbs/
+RUN cp kernel/arch/arm/boot/zImage-dtb device/sony/common-kernel/kernel-dtb-sirius
 
 RUN chmod +x upstream-patches.sh && ./upstream-patches.sh && \
 	source build/envsetup.sh && \
